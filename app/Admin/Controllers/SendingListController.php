@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Email;
+use App\Models\SendingList;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class EmailController extends AdminController
+class SendingListController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Email';
+    protected $title = 'SendingList';
 
     /**
      * Make a grid builder.
@@ -24,9 +24,9 @@ class EmailController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Email());
-        $grid->column('id',__('Id'));
-        $grid->column('address',__('Address'));
+        $grid = new Grid(new SendingList());
+
+
 
         return $grid;
     }
@@ -39,8 +39,9 @@ class EmailController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Email::findOrFail($id));
-        $show->field('address',__('Address'));
+        $show = new Show(SendingList::findOrFail($id));
+
+
 
         return $show;
     }
@@ -52,8 +53,9 @@ class EmailController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Email());
-        $form->email('address',__('Address'))->required();
+        $form = new Form(new SendingList());
+
+
 
         return $form;
     }
