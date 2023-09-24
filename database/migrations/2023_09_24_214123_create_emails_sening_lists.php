@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('emails_sening_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique()->nullable(false);
-            $table->unsignedBigInteger('creator_id')->nullable(false);
+            $table->unsignedBigInteger('email_id')->nullable(false);
+            $table->unsignedBigInteger('sending_list_id')->nullable(false);
+            $table->unique(['email_id','sending_list_id']);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lists');
+        Schema::dropIfExists('emails_sening_lists');
     }
 };
