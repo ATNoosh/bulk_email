@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Controllers\EmailController;
+use App\Admin\Controllers\SendingListController;
 use Illuminate\Routing\Router;
 
 Admin::routes();
@@ -14,6 +15,8 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
 
-    $router->resource('emails',EmailController::class);
+    $router->resource('emails', EmailController::class);
+
+    $router->resource('sending_lists', SendingListController::class);
 
 });

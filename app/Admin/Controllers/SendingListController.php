@@ -25,8 +25,8 @@ class SendingListController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new SendingList());
-
-
+        $grid->column('id',__('Id'));
+        $grid->column('name',__('Name'));
 
         return $grid;
     }
@@ -39,9 +39,8 @@ class SendingListController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(SendingList::findOrFail($id));
-
-
+        $show = new Show(SendingList::findOrFail($id));        
+        $show->field('name',__('Name'));
 
         return $show;
     }
@@ -54,8 +53,8 @@ class SendingListController extends AdminController
     protected function form()
     {
         $form = new Form(new SendingList());
-
-
+        $form->text('name',__('Name'))->required();
+        $form->number('creator_id', __('Creator'))->readonly()->value(auth()->user()->id);
 
         return $form;
     }

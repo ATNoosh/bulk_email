@@ -4,8 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class SendingList extends Model
 {
     use HasFactory;
+
+    public function emails():BelongsToMany
+    {
+        return $this->belongsToMany('emails','emails_sending_lists');
+    }
 }
