@@ -10,8 +10,16 @@ class SendingList extends Model
 {
     use HasFactory;
 
-    public function emails():BelongsToMany
+    protected static function boot()
     {
-        return $this->belongsToMany('emails','emails_sending_lists');
+        parent::boot();
+        SendingList::creating(function ($model) {
+            $model->creator_id = auth()->user()->id;
+        });
+    }
+
+    public function emails(): BelongsToMany
+    {
+        return $this->belongsToMany('emails', 'emails_sending_lists');
     }
 }

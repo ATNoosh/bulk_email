@@ -54,7 +54,6 @@ class SendingListController extends AdminController
     {
         $form = new Form(new SendingList());
         $form->text('name',__('Name'))->required();
-        $form->number('creator_id', __('Creator'))->readonly()->value(auth()->user()->id);
 
         return $form;
     }
