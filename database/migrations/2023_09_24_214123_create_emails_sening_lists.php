@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('emails_sening_lists', function (Blueprint $table) {
+        Schema::create('emails_sending_lists', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('email_id')->nullable(false);
             $table->unsignedBigInteger('sending_list_id')->nullable(false);
